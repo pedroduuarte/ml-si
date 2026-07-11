@@ -1,0 +1,19 @@
+# Ambientes Virtuais
+.venv/
+venv/
+env/
+# Jupyter Notebook
+.ipynb_checkpoints/
+# Arquivos temporários e cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+# Ignorar a pasta de dados
+data/
+*.csv
+*.parquet
+*.xlsx
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
