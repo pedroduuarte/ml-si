@@ -11,7 +11,7 @@ __pycache__/
 *.pyd
 # Ignorar a pasta de dados
 data/
-*.csv
+data/
 *.parquet
 *.xlsx
 # Arquivos do sistema operacional
