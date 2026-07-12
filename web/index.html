@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fase Bonus - Churn Travel</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Fase Bonus</p>
+          <h1>Classificador de churn em viagens</h1>
+        </div>
+        <span id="modelStatus" class="status-badge">Verificando modelo</span>
+      </header>
+
+      <main class="workspace">
+        <section class="panel form-panel" aria-labelledby="formTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Entrada do cliente</p>
+            <h2 id="formTitle">Dados para predicao</h2>
+          </div>
+
+          <form id="predictionForm" class="form-grid">
+            <label class="field">
+              <span>Idade</span>
+              <input name="age" type="number" min="18" max="100" value="34" required>
+            </label>
+
+            <label class="field">
+              <span>Passageiro frequente</span>
+              <select name="frequentFlyer">
+                <option value="No">Nao</option>
+                <option value="Yes" selected>Sim</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Classe de renda anual</span>
+              <select name="annualIncomeClass">
+                <option value="Low Income">Baixa</option>
+                <option value="Middle Income" selected>Media</option>
+                <option value="High Income">Alta</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Servicos contratados</span>
+              <input name="servicesOpted" type="number" min="1" max="6" value="3" required>
+            </label>
+
+            <label class="field">
+              <span>Conta social sincronizada</span>
+              <select name="accountSyncedToSocialMedia">
+                <option value="No" selected>Nao</option>
+                <option value="Yes">Sim</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Reservou hotel</span>
+              <select name="bookedHotelOrNot">
+                <option value="No">Nao</option>
+                <option value="Yes" selected>Sim</option>
+              </select>
+            </label>
+
+            <button class="primary-action" type="submit">Prever agora</button>
+          </form>
+        </section>
+
+        <section class="panel result-panel" aria-labelledby="resultTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Saida do modelo</p>
+            <h2 id="resultTitle">Resultado</h2>
+          </div>
+
+          <div id="messageBox" class="message-box" role="status">Aguardando predicao.</div>
+
+          <div class="result-summary">
+            <span id="predictionLabel">Sem resultado</span>
+            <strong id="probabilityValue">--</strong>
+          </div>
+
+          <div class="meter" aria-hidden="true">
+            <span id="probabilityBar"></span>
+          </div>
+
+          <dl class="model-details">
+            <div>
+              <dt>Modelo</dt>
+              <dd id="modelName">Decision Tree</dd>
+            </div>
+            <div>
+              <dt>F1-Score</dt>
+              <dd id="f1Score">--</dd>
+            </div>
+            <div>
+              <dt>Recall</dt>
+              <dd id="recallScore">--</dd>
+            </div>
+          </dl>
+        </section>
+
+        <aside class="panel metrics-panel" aria-labelledby="metricsTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Avaliacao</p>
+            <h2 id="metricsTitle">Metricas comparadas</h2>
+          </div>
+          <img src="/results/comparacao-metricas.png" alt="Grafico comparando acuracia, precisao, recall e F1-Score entre KNN e Decision Tree">
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>
