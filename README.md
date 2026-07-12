@@ -1,25 +1,71 @@
 # Projeto de Machine Learning
 
-Este projeto contém notebooks para limpeza de dados e treinamento de modelos de Machine Learning.
+Projeto pratico de classificacao para prever churn em clientes de viagens.
 
-## Estrutura do Projeto
+O projeto cobre as tres fases obrigatorias do enunciado nos notebooks e adiciona
+a fase bonus com uma interface web local para simular o usuario final informando
+dados e recebendo a predicao em tempo real.
 
-- `clean-data.ipynb`: Notebook responsável pelo pré-processamento, limpeza e preparação dos dados.
-- `train-models.ipynb`: Notebook focado na criação, treinamento e avaliação dos modelos preditivos.
-- `data/`: Diretório onde os conjuntos de dados (datasets) brutos e processados devem ser armazenados (ignorado pelo versionamento).
+## Estrutura do projeto
 
-## Configuração do Ambiente
+- `clean-data.ipynb`: limpeza, tratamento de nulos, encoding e preparo dos dados.
+- `train-models.ipynb`: treino e avaliacao de KNN e Decision Tree.
+- `results/`: graficos e tabela de metricas gerados na avaliacao.
+- `src/churn_model.py`: regras de validacao, encoding, treino do artefato e predicao.
+- `scripts/train_bonus_model.py`: script separado para treinar o modelo usado no deploy.
+- `app.py`: servidor web local da fase bonus.
+- `web/`: pagina, estilos e JavaScript da interface.
+- `models/`: destino dos artefatos gerados pelo treino.
+- `data/`: datasets brutos e tratados, ignorados pelo Git.
 
-1. Certifique-se de ter o Python instalado.
-2. Ative o ambiente virtual (já configurado no diretório `.venv`):
+## Configuracao do ambiente
+
+1. Crie e ative um ambiente virtual.
+
    ```bash
-   # No Windows
+   python -m venv .venv
    .\.venv\Scripts\activate
    ```
-3. Instale as dependências necessárias caso haja um arquivo de requisitos, ou execute as células nos notebooks que instalam os pacotes necessários (ex: pandas, scikit-learn, matplotlib).
 
-## Como Executar
+2. Instale as dependencias.
 
-1. Abra o Jupyter Notebook ou a sua IDE (ex: VS Code) na pasta do projeto.
-2. Execute primeiro o `clean-data.ipynb` para gerar a base de dados tratada.
-3. Em seguida, execute o `train-models.ipynb` para treinar os modelos usando a base tratada.
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Como executar as fases obrigatorias
+
+1. Coloque o arquivo bruto em `data/Customertravel.csv`.
+2. Execute `clean-data.ipynb` para gerar `data/cleaned_dataset.csv`.
+3. Execute `train-models.ipynb` para treinar e comparar os modelos.
+4. Consulte `results/tabela-metricas.csv` e os graficos em `results/`.
+
+## Fase Bonus: deployment e interface
+
+O treino fica separado da interface. Primeiro gere o artefato do modelo:
+
+```bash
+python scripts/train_bonus_model.py
+```
+
+Depois inicie a aplicacao web local:
+
+```bash
+python app.py
+```
+
+Abra no navegador:
+
+```text
+http://127.0.0.1:8000
+```
+
+A interface envia os dados para `/api/predict` e atualiza a predicao sem
+recarregar a pagina. Se o modelo ainda nao tiver sido treinado, a tela mostra
+`Modelo pendente` e a API retorna a instrucao para executar o script de treino.
+
+## Modelo usado no deploy
+
+A fase bonus usa `Decision Tree (depth=7)`, seguindo a avaliacao atual do
+notebook: ela teve o melhor equilibrio entre F1-Score e Recall na classe
+positiva em comparacao com o KNN.
