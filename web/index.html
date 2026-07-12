@@ -9,12 +9,22 @@
   </head>
   <body>
     <div class="app-shell">
-      <header class="topbar">
-        <div>
+      <header class="hero">
+        <div class="hero-copy">
           <p class="eyebrow">Fase Bonus</p>
-          <h1>Classificador de churn em viagens</h1>
+          <h1>Classificador de churn para clientes de viagens</h1>
+          <p class="hero-subtitle">
+            Simule um atendimento real: preencha os dados do cliente e acompanhe
+            a resposta do modelo em tempo real.
+          </p>
         </div>
-        <span id="modelStatus" class="status-badge">Verificando modelo</span>
+        <div class="hero-status">
+          <span id="modelStatus" class="status-badge">Verificando modelo</span>
+          <div class="hero-stat">
+            <span>Modelo</span>
+            <strong>Decision Tree</strong>
+          </div>
+        </div>
       </header>
 
       <main class="workspace">
@@ -30,7 +40,7 @@
               <input name="age" type="number" min="18" max="100" value="34" required>
             </label>
 
-            <label class="field">
+            <label class="field select-field">
               <span>Passageiro frequente</span>
               <select name="frequentFlyer">
                 <option value="No">Nao</option>
@@ -38,7 +48,7 @@
               </select>
             </label>
 
-            <label class="field">
+            <label class="field select-field wide-field">
               <span>Classe de renda anual</span>
               <select name="annualIncomeClass">
                 <option value="Low Income">Baixa</option>
@@ -52,7 +62,7 @@
               <input name="servicesOpted" type="number" min="1" max="6" value="3" required>
             </label>
 
-            <label class="field">
+            <label class="field select-field">
               <span>Conta social sincronizada</span>
               <select name="accountSyncedToSocialMedia">
                 <option value="No" selected>Nao</option>
@@ -60,7 +70,7 @@
               </select>
             </label>
 
-            <label class="field">
+            <label class="field select-field">
               <span>Reservou hotel</span>
               <select name="bookedHotelOrNot">
                 <option value="No">Nao</option>
@@ -78,15 +88,16 @@
             <h2 id="resultTitle">Resultado</h2>
           </div>
 
-          <div id="messageBox" class="message-box" role="status">Aguardando predicao.</div>
+          <div class="risk-card">
+            <div class="risk-header">
+              <span id="predictionLabel">Sem resultado</span>
+              <strong id="probabilityValue">--</strong>
+            </div>
 
-          <div class="result-summary">
-            <span id="predictionLabel">Sem resultado</span>
-            <strong id="probabilityValue">--</strong>
-          </div>
-
-          <div class="meter" aria-hidden="true">
-            <span id="probabilityBar"></span>
+            <div class="meter" aria-hidden="true">
+              <span id="probabilityBar"></span>
+            </div>
+            <p id="messageBox" class="message-box" role="status">Aguardando predicao.</p>
           </div>
 
           <dl class="model-details">
@@ -110,7 +121,13 @@
             <p class="eyebrow">Avaliacao</p>
             <h2 id="metricsTitle">Metricas comparadas</h2>
           </div>
-          <img src="/results/comparacao-metricas.png" alt="Grafico comparando acuracia, precisao, recall e F1-Score entre KNN e Decision Tree">
+          <div class="metrics-content">
+            <img src="/results/comparacao-metricas.png" alt="Grafico comparando acuracia, precisao, recall e F1-Score entre KNN e Decision Tree">
+            <div class="metrics-note">
+              <strong>Escolha do deploy</strong>
+              <span>Decision Tree depth 7 prioriza melhor equilibrio entre recall e F1-Score.</span>
+            </div>
+          </div>
         </aside>
       </main>
     </div>
