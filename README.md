@@ -20,6 +20,8 @@ dados e recebendo a predicao em tempo real.
 - `data/`: datasets brutos e tratados, ignorados pelo Git.
 - `docs/analise-criterios-e-guia-estudo.md`: analise do projeto pelos criterios
   de avaliacao e guia para estudar a implementacao.
+- `docs/relatorio-projeto.md`: relatorio formal do projeto, com metodologia,
+  resultados, interpretacao e conclusao.
 
 ## Configuracao do ambiente
 
