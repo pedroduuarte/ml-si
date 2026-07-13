@@ -8,9 +8,9 @@ dados e recebendo a predicao em tempo real.
 
 ## Estrutura do projeto
 
-- `notebooks/clean-data.ipynb`: limpeza, tratamento de nulos, encoding e preparo dos dados.
+- `notebooks/clean-data.ipynb`: limpeza, tratamento de nulos, encoding e exportacao do dataset limpo.
 - `scripts/clean_data.py`: versao executavel pelo terminal da limpeza do notebook.
-- `notebooks/train-models.ipynb`: treino e avaliacao de KNN e Decision Tree.
+- `notebooks/train-models.ipynb`: separacao treino/teste, scaling, treino e avaliacao de KNN e Decision Tree.
 - `results/`: graficos e tabela de metricas gerados na avaliacao.
 - `src/churn_model.py`: regras de validacao, encoding, treino do artefato e predicao.
 - `scripts/train_bonus_model.py`: script separado para treinar o modelo usado no deploy.
@@ -40,7 +40,7 @@ dados e recebendo a predicao em tempo real.
 
 1. Coloque o arquivo bruto em `data/Customertravel.csv`.
 2. Execute `notebooks/clean-data.ipynb` ou rode `python scripts/clean_data.py` para gerar `data/cleaned_dataset.csv`.
-3. Execute `notebooks/train-models.ipynb` para treinar e comparar os modelos.
+3. Execute `notebooks/train-models.ipynb` para separar treino/teste, aplicar scaling, treinar e comparar os modelos.
 4. Consulte `results/tabela-metricas.csv` e os graficos em `results/`.
 
 ## Fase Bonus: deployment e interface
