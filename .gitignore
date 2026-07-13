@@ -17,6 +17,8 @@ data/
 # Artefatos gerados pela fase bonus
 models/*.pkl
 models/*.metadata.json
+# Documentos locais de estudo
+docs/analise-criterios-e-guia-estudo.md
 # Arquivos do sistema operacional
 .DS_Store
 Thumbs.db
