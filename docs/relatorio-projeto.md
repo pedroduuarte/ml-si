@@ -46,12 +46,13 @@ A Arvore de Decisao foi avaliada com diferentes valores de profundidade maxima:
 O modelo escolhido para comparacao final foi:
 
 ```text
-Decision Tree (depth=7)
+Decision Tree (depth=5)
 ```
 
 Essa configuracao foi utilizada por apresentar bom desempenho no conjunto de
-teste e por evitar uma arvore totalmente sem limite, que poderia aumentar o
-risco de overfitting.
+teste, por evitar uma arvore totalmente sem limite que poderia aumentar o
+risco de overfitting, e por apresentar o mesmo desempenho que depth=7 com
+menor complexidade e menor gap entre treino e teste.
 
 ## 3. Tabela comparativa de metricas
 
@@ -60,7 +61,7 @@ As metricas obtidas no conjunto de teste foram:
 | Modelo | Acuracia | Precisao | Recall | F1-Score |
 |---|---:|---:|---:|---:|
 | KNN (GridSearch) | 0.8603 | 0.8000 | 0.5581 | 0.6575 |
-| Decision Tree (depth=7) | 0.8827 | 0.7500 | 0.7674 | 0.7586 |
+| Decision Tree (depth=5) | 0.8827 | 0.7500 | 0.7674 | 0.7586 |
 
 Esses resultados tambem estao registrados no arquivo:
 
@@ -87,7 +88,7 @@ A acuracia mede a proporcao total de acertos do modelo.
 | Modelo | Acuracia |
 |---|---:|
 | KNN (GridSearch) | 0.8603 |
-| Decision Tree (depth=7) | 0.8827 |
+| Decision Tree (depth=5) | 0.8827 |
 
 A Arvore de Decisao teve acuracia maior que o KNN. Isso indica que, considerando
 todas as classes, ela acertou uma proporcao maior de previsoes no conjunto de
@@ -101,7 +102,7 @@ eram churn.
 | Modelo | Precisao |
 |---|---:|
 | KNN (GridSearch) | 0.8000 |
-| Decision Tree (depth=7) | 0.7500 |
+| Decision Tree (depth=5) | 0.7500 |
 
 Nesse ponto, o KNN foi superior. Isso significa que, quando o KNN aponta um
 cliente como churn, ele tem uma taxa de acerto maior nessa classe positiva.
@@ -115,7 +116,7 @@ conseguiu identificar.
 | Modelo | Recall |
 |---|---:|
 | KNN (GridSearch) | 0.5581 |
-| Decision Tree (depth=7) | 0.7674 |
+| Decision Tree (depth=5) | 0.7674 |
 
 Essa e uma metrica muito importante para o cenario escolhido. Em problemas de
 churn, deixar de identificar clientes em risco pode significar perder a chance
@@ -134,7 +135,7 @@ maior quantidade possivel de positivos reais.
 | Modelo | F1-Score |
 |---|---:|
 | KNN (GridSearch) | 0.6575 |
-| Decision Tree (depth=7) | 0.7586 |
+| Decision Tree (depth=5) | 0.7586 |
 
 A Arvore de Decisao apresentou F1-Score maior. Isso mostra que, mesmo tendo uma
 precisao um pouco menor que o KNN, ela teve um desempenho geral mais equilibrado
@@ -143,7 +144,7 @@ por causa do recall significativamente superior.
 ## 5. Discussao sobre o melhor modelo
 
 O melhor modelo para o cenario escolhido foi a Arvore de Decisao com
-`max_depth=7`.
+`max_depth=5`.
 
 A escolha se justifica pelos seguintes pontos:
 
@@ -183,7 +184,7 @@ Com base na tabela de metricas, nos graficos gerados e na interpretacao dos
 resultados, o modelo mais adequado para o cenario escolhido foi:
 
 ```text
-Decision Tree (depth=7)
+Decision Tree (depth=5)
 ```
 
 Esse modelo apresentou melhor desempenho geral para o problema de churn,

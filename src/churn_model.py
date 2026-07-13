@@ -217,7 +217,7 @@ def train_model_artifact(
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
 
-    model = DecisionTreeClassifier(max_depth=7, random_state=42)
+    model = DecisionTreeClassifier(max_depth=5, random_state=42)
     model.fit(X_train_scaled, y_train)
     y_pred = model.predict(X_test_scaled)
 
@@ -228,7 +228,7 @@ def train_model_artifact(
         "f1_score": float(f1_score(y_test, y_pred)),
     }
     metadata = {
-        "model_name": "Decision Tree (depth=7)",
+        "model_name": "Decision Tree (depth=5)",
         "created_at": datetime.now(timezone.utc).isoformat(),
         "source_data": _relative_or_string(data_path),
         "row_count": int(len(df)),
@@ -301,6 +301,6 @@ def predict_payload(
         "label": TARGET_LABELS.get(prediction, str(prediction)),
         "probability_churn": probability_churn,
         "encoded_features": encoded_features,
-        "model_name": metadata.get("model_name", "Decision Tree (depth=7)"),
+        "model_name": metadata.get("model_name", "Decision Tree (depth=5)"),
         "metrics": metadata.get("metrics", {}),
     }

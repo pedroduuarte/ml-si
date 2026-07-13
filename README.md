@@ -69,6 +69,6 @@ recarregar a pagina. Se o modelo ainda nao tiver sido treinado, a tela mostra
 
 ## Modelo usado no deploy
 
-A fase bonus usa `Decision Tree (depth=7)`, seguindo a avaliacao atual do
+A fase bonus usa `Decision Tree (depth=5)`, seguindo a avaliacao atual do
 notebook: ela teve o melhor equilibrio entre F1-Score e Recall na classe
 positiva em comparacao com o KNN.
