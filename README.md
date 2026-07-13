@@ -18,6 +18,8 @@ dados e recebendo a predicao em tempo real.
 - `web/`: pagina, estilos e JavaScript da interface.
 - `models/`: destino dos artefatos gerados pelo treino.
 - `data/`: datasets brutos e tratados, ignorados pelo Git.
+- `docs/analise-criterios-e-guia-estudo.md`: analise do projeto pelos criterios
+  de avaliacao e guia para estudar a implementacao.
 
 ## Configuracao do ambiente
 
